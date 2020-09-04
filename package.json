@@ -1,0 +1,31 @@
+{
+  "name": "maratbr.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gatsby build && gh-pages -d public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaratBR/maratbr.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaratBR/maratbr.github.io/issues"
+  },
+  "homepage": "https://github.com/MaratBR/maratbr.github.io#readme",
+  "dependencies": {
+    "gatsby": "^2.24.53",
+    "gatsby-plugin-sass": "^2.3.12",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
+  }
+}
