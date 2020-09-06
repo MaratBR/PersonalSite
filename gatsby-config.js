@@ -4,5 +4,8 @@ module.exports = {
       siteUrl: `https://burnaev.space`,
       description: `Blazing fast modern site generator for React`,
     },
-    plugins: ['gatsby-plugin-sass']
+    plugins: [
+      'gatsby-plugin-sass',
+      'gatsby-plugin-mini-css-class-name'
+    ]
 }

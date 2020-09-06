@@ -1,0 +1,11 @@
+.project {
+    padding: 2rem;
+
+    &--nopaddingbottom {
+        padding-bottom: 0;
+    }
+
+    &__name {
+        font-size: 2.2em;
+    }
+}

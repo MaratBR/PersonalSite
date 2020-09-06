@@ -1,5 +1,6 @@
 import React from "react"
 import "./welcome-screen.tsx.scss"
+import { Parallax } from "react-scroll-parallax"
 
 const TEXTS = [
     'Android и Web разработчик',
@@ -13,7 +14,8 @@ type WelcomeScreenState = {
     text: string,
     textIndex: number,
     textAppears: boolean,
-    emptyTicks: number
+    emptyTicks: number,
+    scrollState: number
 }
 
 export default class WelcomeScreen extends React.Component<{}, WelcomeScreenState> {
@@ -21,11 +23,18 @@ export default class WelcomeScreen extends React.Component<{}, WelcomeScreenStat
         text: TEXTS[0],
         textIndex: 0,
         textAppears: false,
-        emptyTicks: 0
+        emptyTicks: 0,
+        scrollState: 0
     }
+    handler = null 
+    rootRef: React.RefObject<HTMLDivElement> = React.createRef()
+    welcomeTitleBottomRef: React.RefObject<HTMLElement> = React.createRef()
 
     componentDidMount() {
         setTimeout(this.startNextWord.bind(this), 4000)
+        this.handler = this.onPageScroll.bind(this)
+        window.addEventListener('scroll', this.handler)
+        this.onPageScroll()
     }
 
     startNextWord() {
@@ -65,23 +74,42 @@ export default class WelcomeScreen extends React.Component<{}, WelcomeScreenStat
         setTimeout(this.startNextWord.bind(this), 4000)
     }
 
-    componentWillUnmount() {
+    onPageScroll() {
+        const root = this.rootRef.current
+        const bottomEl = this.welcomeTitleBottomRef.current
+        if (root && bottomEl) {
+            const rect = root.getBoundingClientRect()
+            const bottomRect = bottomEl.getBoundingClientRect()
 
+            console.log(rect.bottom, rect.y)
+            const state = bottomRect.y < 50 ? 2 :
+                rect.y < -150 ? 1 : 0
+            if (this.state.scrollState !== state) {
+                this.setState({scrollState: state})
+            }
+        }
+        
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handler)
     }
 
     render() {
-        return <div className="welcome-screen">
-            <div className="welcome-screen__title">
-                <span className="welcome-screen__title__text">
-                    &mdash; <em>Марат Бурнаев</em> &mdash; 
-                </span>
-                <span>
-                    Я {this.state.text}
-                    <span className="welcome-screen__title__blinker" />
-                </span>
-            </div>
-
-            <div className="welcome-screen__avatar"></div>
+        return <div 
+            className={"welcome-screen welcome-screen--state-" + this.state.scrollState} 
+            ref={this.rootRef}>
+            <Parallax y={[-50, 50]}>
+                <div className="welcome-screen__title">
+                    <span className="welcome-screen__title__text title" aria->
+                        &mdash; <em>Марат Бурнаев</em> &mdash; 
+                    </span>
+                    <span ref={this.welcomeTitleBottomRef}>
+                        Я {this.state.text}
+                        <span className="welcome-screen__title__blinker" />
+                    </span>
+                </div>
+            </Parallax>
 
             <div className="welcome-screen__hint-arrow">
                 <svg viewBox="0 0 100 25" width="100" height="25">
@@ -90,7 +118,6 @@ export default class WelcomeScreen extends React.Component<{}, WelcomeScreenStat
                 </svg>
             </div>
 
-            <svg className="welcome-screen__waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,224L30,208C60,192,120,160,180,138.7C240,117,300,107,360,133.3C420,160,480,224,540,229.3C600,235,660,181,720,149.3C780,117,840,107,900,128C960,149,1020,203,1080,202.7C1140,203,1200,149,1260,117.3C1320,85,1380,75,1410,69.3L1440,64L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path></svg>
         </div>
     }
 }

@@ -1,7 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+@import "./sections.scss";
+@import "./features.scss";
+@import "./helpers.scss";
+@import "./badge.scss";
+@import "./containers.scss";
+
 
 body {
-    margin: 0;
-    font-family: 'Nunito', sans-serif;
+	background: white;
+	margin: 0;
+	font-family: 'Nunito', sans-serif;	
 }
 
+.title {
+	font-family: 'Poiret One', cursive;
+}
+
+h1, h2, h3, h4, h5, h6, .header {
+	font-weight: normal;
+}
+
+::-webkit-scrollbar{
+	width: 5px;
+}
+
+::-webkit-scrollbar-track-piece{
+	background-color: #FFF;
+}
+
+::-webkit-scrollbar-thumb{
+	background-color: #000;
+	outline: 2px solid #FFF;
+	outline-offset: -2px;
+	border: .1px solid #FFF;
+}
+
+::-webkit-scrollbar-thumb:hover{
+	background-color: #909090;
+}

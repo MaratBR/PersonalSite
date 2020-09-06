@@ -1,36 +1,55 @@
 @import "../../styles/constants.scss";
 
 .welcome-screen {
-    width: 100vw;
+    box-sizing: border-box;
+    width: 100%;
     height: 100vh;
     background-color: white;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     position: relative;
+    overflow: hidden;
+    transition: all 1s;
+
+    &--state-1 {
+        background: #f2f2fa;
+        opacity: 0.5;
+    }
+
+    &:not(&--state-0) &__hint-arrow {
+        transform: translateX(-50%) translateY(150%);
+    }
+
+    &--state-2 &__title {
+        opacity: 0;
+    }
 
     &__hint-arrow {
         position: absolute;
         bottom: 0;
         left: 50%;
-        padding-bottom: 1rem;
+        padding-bottom: 2rem;
         transform: translateX(-50%);
+        transition: all .4s;
 
         & > svg {
-            stroke: #aaa;
+            stroke: #444;
         }
     }
 
     &__title {
+        transition: all .2s;
+        height: 100vh;
+        justify-content: center;
         display: flex;
         flex-direction: column;
         align-items: center;
         &__text {
-            font-size: xx-large;
-            color: #444;
+            font-size: 2.2em;
+            color: black;
 
             em {
-                color: black;
                 font-style: normal;
             }
         }
