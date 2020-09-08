@@ -12,4 +12,15 @@
         border-top: 1px solid #f2f2f2;
     }
 
+    .feature {
+        &--r:hover svg {color: rgb(143, 0, 0);}
+        &--g:hover svg {color: #a4c639;}
+        &--b:hover svg {color: #006c8e;}
+        &--y:hover svg {color: rgb(216, 148, 0);}
+
+
+        &:active {
+            background: #eee;
+        }
+    }
 }

@@ -1,0 +1,34 @@
+{
+    "myName": "Марат Бурнаев",
+    "typingTexts": [
+        "Android и Web разработчик",
+        "студент",
+        "пишу код",
+        "устал",
+        "просто гусь"
+    ],
+    "about": "lorem\n\n\n\nlorem",
+
+    "features": [
+        {
+            "title": "Мобильная разработка",
+            "icon": "fas fa-mobile-alt",
+            "description": "Разработка мобильных приложений под Android с бэкэндом или без"
+        },
+        {
+            "title": "Десктоп",
+            "icon": "fas fa-desktop",
+            "description": "Приложения под Windows с использованием WPF"
+        },
+        {
+            "title": "Веб",
+            "icon": "fas fa-external-link-alt",
+            "description": "Разработка веб-сайтов и веб-API на PHP, Python, ASP.NET"
+        },
+        {
+            "title": "Базы данных",
+            "icon": "fas fa-database",
+            "description": "Проектирование и создание SQL/NoSQL баз данных"
+        }
+    ]
+}

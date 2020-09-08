@@ -1,0 +1,91 @@
+@import "../constants.scss";
+
+.root {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 1s;
+}
+
+.welcomeScreen {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 1s;
+}
+
+.scrolledDownState {
+    background: #f2f2fa;
+    opacity: 0.5;
+}
+
+.hiddenState .title {
+    opacity: 0;
+}
+
+.scrolledDownState .hintArrow {
+    transform: translateX(-50%) translateY(150%);
+}
+
+.hintArrow {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    padding-bottom: 2rem;
+    transform: translateX(-50%);
+    transition: all .4s;
+
+    & > svg {
+        stroke: #444;
+    }
+}
+
+
+.title {
+    transition: all .2s;
+    height: 100vh;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.typingText {
+    font-size: 2.2em;
+    color: black;
+
+    em {
+        font-style: normal;
+    }
+}
+
+@keyframes blinker { 
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    51% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+.blinker {
+    background-color: #222;
+    position: relative;
+    top: 0.25em;
+    margin-left: 1px;
+    height: 1.2em;
+    width: 1px;
+    display: inline-block;
+    text-decoration: blink;
+    animation: blinker 1s linear infinite;
+}

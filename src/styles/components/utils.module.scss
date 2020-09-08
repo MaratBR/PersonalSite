@@ -1,0 +1,36 @@
+.flex {
+    display: flex;
+}
+
+.justifyContent__center {
+    justify-content: center;
+}
+
+.justifyContent__start {
+    justify-content: start;
+}
+
+.justifyContent__end {
+    justify-content: end;
+}
+
+.flexDirection__vertical {
+    flex-direction: column;
+}
+
+.flexDirection__horizontal {
+    flex-direction: row;
+}
+
+.noselect {
+    user-select: none;
+}
+
+.fontSize_2em { 
+    font-size: 2em; 
+}
+
+.headerMargin {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}

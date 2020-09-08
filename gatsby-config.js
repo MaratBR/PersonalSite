@@ -6,6 +6,12 @@ module.exports = {
     },
     plugins: [
       'gatsby-plugin-sass',
-      'gatsby-plugin-mini-css-class-name'
+      {
+        resolve: `gatsby-plugin-minify-classnames`,
+        options: {
+          dictionary: 'bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ0123456789',
+          enableOnDevelopment: true,
+        },
+      }
     ]
 }

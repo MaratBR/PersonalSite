@@ -1,6 +1,6 @@
 import React, { CSSProperties } from "react"
-import "./project.tsx.scss"
 import { getTextColorForHexColor } from "../../utils/color"
+import { HEADER_MARGIN, FONT_SIZE_2EM, NOSELECT } from "../common/css-utils"
 
 
 const TAGS = {
@@ -15,8 +15,8 @@ const TAGS = {
 type ProjectProps = {
     name: string,
     bg: string,
-    accent: string,
-    tags: string[],
+    accent?: string,
+    tags?: string[],
     noPaddingAtBottom?: boolean,
     gradientColor?: string
 }
@@ -48,10 +48,10 @@ export default class Project extends React.Component<ProjectProps> {
 
         if (this.props.gradientColor)
             style.backgroundImage = `linear-gradient(45deg, ${this.props.gradientColor}, transparent)`
-        return <div className={"project" + (this.props.noPaddingAtBottom ? " project--nopaddingbottom" : "")} aria-label={this.props.name} style={style}>
-            <div className="container1500">
-                <div className="project__name">
-                    {this.props.name}
+        return <div className={"" + (this.props.noPaddingAtBottom ? " project--nopaddingbottom" : "")} aria-label={this.props.name} style={style}>
+            <div className="container">
+                <div className={`${HEADER_MARGIN} ${FONT_SIZE_2EM} ${NOSELECT}`}>
+                    <span className="title">{this.props.name}</span>
                     {this.tagsElements}
                 </div>
                 {this.props.children}

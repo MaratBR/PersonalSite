@@ -1,8 +1,25 @@
 import React from "react"
-import "./my-projects.tsx.scss"
 import Project from "./project"
+import PhoneImage from "../common/phone-image"
+import ContentContainer from "../common/content-container"
 
-class MyProjects extends React.Component {
+type MyProjectsState = {
+    isLoading: boolean
+}
+
+
+class MyProjects extends React.Component<{}, MyProjectsState> {
+    constructor(props: Readonly<{}>) {
+        super(props)
+        this.setState({
+            isLoading: true
+        })
+    }
+
+    componentWillMount() {
+
+    }
+
     render() {
         return <section className="section my-projects">
             <Project 
@@ -10,19 +27,13 @@ class MyProjects extends React.Component {
                 name="GeneralTrans" 
                 bg="#333" 
                 gradientColor="black"
-                tags={["mobile", "android", "kotlin"]}>
-                <div className="content-block content-block--end nopadding">
-                    <div className="primary">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore nostrum veritatis pariatur, quas assumenda vero nobis omnis iusto est ab ipsum fuga placeat corrupti excepturi dolorem neque reprehenderit cupiditate asperiores.
+                tags={["android", "kotlin"]}>
+                <ContentContainer noBottomPadding={true}>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis ipsa, quibusdam animi incidunt maiores pariatur debitis illum, et laboriosam ab blanditiis, perferendis velit dolores dolorem autem quasi amet tenetur quod!</p>
+                    <div style={{height: "250px", overflow: "hidden"}}>
+                        <PhoneImage src={require("../../assets/generaltrans.jpg")} width="260px" />
                     </div>
-
-                    <div className="secondary generaltrans-phone-container">
-                        <div className="generaltrans-phone">
-                        <div className="generaltrans-phone__app"></div>
-                            <div className="generaltrans-phone__frame"></div>
-                        </div>
-                    </div>
-                </div>
+                </ContentContainer>
             </Project>
         </section>
     }

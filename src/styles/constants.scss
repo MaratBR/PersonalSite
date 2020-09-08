@@ -13,3 +13,9 @@
 @mixin for-big-desktop-up {
     @media (min-width: 1800px) { @content; }
 }
+
+$bg: white;
+$bgActive: #eee;
+$bgActive2: #999;
+$containerWidth: 1000px;
+$titleFont: 'Poiret One', cursive;

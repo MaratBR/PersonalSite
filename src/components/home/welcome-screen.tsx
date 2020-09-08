@@ -1,14 +1,9 @@
 import React from "react"
-import "./welcome-screen.tsx.scss"
 import { Parallax } from "react-scroll-parallax"
+const styles = require("../../styles/components/welcome.module.scss")
+import texts from "../../resources/texts.json"
 
-const TEXTS = [
-    'Android и Web разработчик',
-    'студент',
-    'пишу код',
-    'устал',
-    'просто гусь'
-]
+const TEXTS = texts.typingTexts
 
 type WelcomeScreenState = {
     text: string,
@@ -29,6 +24,7 @@ export default class WelcomeScreen extends React.Component<{}, WelcomeScreenStat
     handler = null 
     rootRef: React.RefObject<HTMLDivElement> = React.createRef()
     welcomeTitleBottomRef: React.RefObject<HTMLElement> = React.createRef()
+    typingEnabled = true
 
     componentDidMount() {
         setTimeout(this.startNextWord.bind(this), 4000)
@@ -38,6 +34,9 @@ export default class WelcomeScreen extends React.Component<{}, WelcomeScreenStat
     }
 
     startNextWord() {
+        if (!this.typingEnabled) {
+            return
+        }
         const textIndex = this.state.textIndex >= TEXTS.length - 1 ? 0 : this.state.textIndex + 1
         this.setState({textIndex})
         this.letterTick()
@@ -71,7 +70,8 @@ export default class WelcomeScreen extends React.Component<{}, WelcomeScreenStat
     }
 
     onTextComplete() {
-        setTimeout(this.startNextWord.bind(this), 4000)
+        if (this.typingEnabled)
+            setTimeout(this.startNextWord.bind(this), 4000)
     }
 
     onPageScroll() {
@@ -81,11 +81,17 @@ export default class WelcomeScreen extends React.Component<{}, WelcomeScreenStat
             const rect = root.getBoundingClientRect()
             const bottomRect = bottomEl.getBoundingClientRect()
 
-            console.log(rect.bottom, rect.y)
             const state = bottomRect.y < 50 ? 2 :
                 rect.y < -150 ? 1 : 0
             if (this.state.scrollState !== state) {
                 this.setState({scrollState: state})
+                const typingEnabled = state !== 2
+                if (typingEnabled !== this.typingEnabled) {
+                    this.typingEnabled = typingEnabled
+                    if (this.typingEnabled) {
+                        this.onTextComplete()
+                    }
+                }
             }
         }
         
@@ -95,23 +101,28 @@ export default class WelcomeScreen extends React.Component<{}, WelcomeScreenStat
         window.removeEventListener('scroll', this.handler)
     }
 
+    get scrollState() {
+        return this.state.scrollState === 0 ? "" :
+            this.state.scrollState === 1 ? styles.scrolledDownState : `${styles.scrolledDownState} ${styles.hiddenState}`
+    }
+
     render() {
         return <div 
-            className={"welcome-screen welcome-screen--state-" + this.state.scrollState} 
+            className={`${styles.root} ${this.scrollState}`} 
             ref={this.rootRef}>
             <Parallax y={[-50, 50]}>
-                <div className="welcome-screen__title">
-                    <span className="welcome-screen__title__text title" aria->
-                        &mdash; <em>Марат Бурнаев</em> &mdash; 
+                <div className={styles.title}>
+                    <span className={`${styles.typingText} title`}>
+                        &mdash; <em>{texts.myName}</em> &mdash; 
                     </span>
-                    <span ref={this.welcomeTitleBottomRef}>
+                    <span ref={this.welcomeTitleBottomRef} aria-label={TEXTS[0]}>
                         Я {this.state.text}
-                        <span className="welcome-screen__title__blinker" />
+                        <span className={styles.blinker} />
                     </span>
                 </div>
             </Parallax>
 
-            <div className="welcome-screen__hint-arrow">
+            <div className={styles.hintArrow}>
                 <svg viewBox="0 0 100 25" width="100" height="25">
                     <line x1="0" x2="50" y1="0" y2="25" />
                     <line x1="50" x2="100" y1="25" y2="0" />

@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import Firebase, { FirebaseContext } from "./firebase"
 
 export default function HTML(props) {
   return (
@@ -11,17 +12,21 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
-        <div
-          key={`body`}
-          id="___gatsby"
-          dangerouslySetInnerHTML={{ __html: props.body }}
-        />
+        <FirebaseContext.Provider value={new Firebase()}>
+          <div
+            key={`body`}
+            id="___gatsby"
+            dangerouslySetInnerHTML={{ __html: props.body }}
+          />
+        </FirebaseContext.Provider>
+        <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
         {props.postBodyComponents}
-        <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js" integrity="sha384-3Nqiqht3ZZEO8FKj7GR1upiI385J92VwWNLj+FqHxtLYxd9l+WYpeqSOrLh0T12c" crossorigin="anonymous"></script>
       </body>
     </html>
   )

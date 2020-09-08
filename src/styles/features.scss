@@ -11,48 +11,4 @@
         flex-wrap: wrap;
         flex-direction: row;
     }
-
-    .feature {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        transition: all 0.4s;
-        padding: 2rem;
-        border: 2px solid #fafafa;
-
-        svg {
-            opacity: 0.65;
-            color: black;
-            transition: all 0.2s;
-        }
-
-        @include for-phone-only {
-            margin-top: .5rem;
-            margin-bottom: .5rem;
-        }
-
-        @include for-tablet-portrait-up {
-            max-width: 13rem;
-            margin-left: .2rem;
-            margin-right: .2rem;
-
-            &:hover {
-                background: #fff;
-                transform: scale(1.05) translateY(.9rem);
-                box-shadow: 0 10px 14px -8px rgba(#888, $alpha: 0.35);
-                border-color: rgb(0, 21, 92);
-                z-index: 2;
-            }
-        }
-
-        top: 0;
-        user-select: none;
-
-        &:hover svg {
-            opacity: 1;
-        }
-
-    }
 }

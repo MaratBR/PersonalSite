@@ -1,0 +1,23 @@
+@import "../constants.scss";
+
+.title {
+    position: relative;
+    display: inline-block;
+    font-family: $titleFont;
+}
+
+.underline::after {
+    content: ' ';
+    display: inline-block;
+    height: 15px;
+    width: 100%;
+    position: absolute;
+    background: #bce3ffc9;
+    bottom: -1px;
+    left: 0;
+    z-index: -1;
+}
+
+.container {
+    display: flex;
+}

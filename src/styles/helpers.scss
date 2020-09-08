@@ -6,3 +6,40 @@
 .nopadding {
     padding: 0 !important;
 }
+
+.flex-list {
+    display: flex;
+    list-style: none;
+}
+
+.children-margin {
+    * {
+        margin: .4rem;
+    }
+}
+
+.justify-content-center {
+    justify-content: center;
+    padding: 0;
+}
+
+@mixin svg-child-color($name, $color) {
+    &-#{$name} {
+        svg {
+            color: $color;
+        }
+    
+        &--hover:hover svg {
+            color: $color;
+        }
+    }
+}
+
+.svg-child-color {
+    @include svg-child-color("vk", #4680C2);
+    @include svg-child-color("gh", #6f42c1);
+}
+
+.center-text {
+    text-align: center;
+}

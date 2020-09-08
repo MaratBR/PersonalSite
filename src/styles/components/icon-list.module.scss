@@ -1,0 +1,24 @@
+@import "../constants.scss";
+
+.iconList {
+    display: flex;
+}
+
+.icon {
+    border-radius: 1000px;
+    padding: .8rem;
+    margin: .4rem;
+    cursor: pointer;
+    transition: all .3s;
+    display: inline-block;
+    border: 1px solid transparent;
+
+    &:hover {
+        transform: scale(.95);
+        background: $bgActive;
+    }
+
+    &:active {
+        border-color: $bgActive2;
+    }
+}
