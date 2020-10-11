@@ -26,13 +26,6 @@ export default class WelcomeScreen extends React.Component<{}, WelcomeScreenStat
     welcomeTitleBottomRef: React.RefObject<HTMLElement> = React.createRef()
     typingEnabled = true
 
-    componentDidMount() {
-        setTimeout(this.startNextWord.bind(this), 4000)
-        this.handler = this.onPageScroll.bind(this)
-        window.addEventListener('scroll', this.handler)
-        this.onPageScroll()
-    }
-
     startNextWord() {
         if (!this.typingEnabled) {
             return
@@ -74,41 +67,13 @@ export default class WelcomeScreen extends React.Component<{}, WelcomeScreenStat
             setTimeout(this.startNextWord.bind(this), 4000)
     }
 
-    onPageScroll() {
-        const root = this.rootRef.current
-        const bottomEl = this.welcomeTitleBottomRef.current
-        if (root && bottomEl) {
-            const rect = root.getBoundingClientRect()
-            const bottomRect = bottomEl.getBoundingClientRect()
-
-            const state = bottomRect.y < 50 ? 2 :
-                rect.y < -150 ? 1 : 0
-            if (this.state.scrollState !== state) {
-                this.setState({scrollState: state})
-                const typingEnabled = state !== 2
-                if (typingEnabled !== this.typingEnabled) {
-                    this.typingEnabled = typingEnabled
-                    if (this.typingEnabled) {
-                        this.onTextComplete()
-                    }
-                }
-            }
-        }
-        
-    }
-
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handler)
     }
 
-    get scrollState() {
-        return this.state.scrollState === 0 ? "" :
-            this.state.scrollState === 1 ? styles.scrolledDownState : `${styles.scrolledDownState} ${styles.hiddenState}`
-    }
-
     render() {
         return <div 
-            className={`${styles.root} ${this.scrollState}`} 
+            className={styles.root} 
             ref={this.rootRef}>
             <Parallax y={[-50, 50]}>
                 <div className={styles.title}>

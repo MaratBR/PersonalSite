@@ -31,27 +31,6 @@
     opacity: 0.5;
 }
 
-.hiddenState .title {
-    opacity: 0;
-}
-
-.scrolledDownState .hintArrow {
-    transform: translateX(-50%) translateY(150%);
-}
-
-.hintArrow {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    padding-bottom: 2rem;
-    transform: translateX(-50%);
-    transition: all .4s;
-
-    & > svg {
-        stroke: #444;
-    }
-}
-
 
 .title {
     transition: all .2s;

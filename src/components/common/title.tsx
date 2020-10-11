@@ -13,11 +13,11 @@ export default class Title extends React.Component<TitleProps> {
                 styles.container,
                 justifyContent(this.props.align)
             ].join(" ")}>
-            <h1 className={
+            <h2 className={
                 styles.title + 
                 (this.props.underline ? (" " + styles.underline) : "")}>
                 {this.props.children}
-            </h1>
+            </h2>
         </div>
     }
 }

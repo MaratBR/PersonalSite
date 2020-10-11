@@ -1,6 +1,5 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Firebase, { FirebaseContext } from "./firebase"
 
 export default function HTML(props) {
   return (
@@ -17,13 +16,11 @@ export default function HTML(props) {
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
-        <FirebaseContext.Provider value={new Firebase()}>
-          <div
-            key={`body`}
-            id="___gatsby"
-            dangerouslySetInnerHTML={{ __html: props.body }}
-          />
-        </FirebaseContext.Provider>
+        <div
+          key={`body`}
+          id="___gatsby"
+          dangerouslySetInnerHTML={{ __html: props.body }}
+        />
         <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
         {props.postBodyComponents}

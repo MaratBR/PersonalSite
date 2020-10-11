@@ -1,17 +1,23 @@
 import React from "react"
-import ContentContainer from "../common/content-container"
-import texts from "../../resources/texts.json"
+import Container from "../common/container"
+import Title from "../common/title"
+import ContactMe from "../home/contact-me"
+const styles = require('../../styles/components/about.module.scss');
 
 export default function About() {
-    return <ContentContainer>
+    return <Container>
+        <Title align="center" underline>Обо мне</Title>
 
-        <div className="primary">
-            {texts.about.split(/\n+/).map(t => <p>{t}</p>)}
+        <div className={styles.aboutText}>
+            <p>Привет! Меня зовут Марат, я студент.</p>
+            <p>
+                Программирование является моим увлечением вот уже 4 года. Я позиционирую себя как программиста полного стека. 
+                У меня есть опыт разработки Android приложений на Kotlin, Веб-API на ASP.NET Core и веб-приложений на Python 
+                (Django, Flask), классических приложений для Windows с исползованием WPF.
+            </p>
         </div>
 
-        <div className="secondary">
-            <img src="https://i.pinimg.com/236x/8c/cb/14/8ccb14f08b8bc959ac99da8c22a57414--hunger-games-movies-the-hunger-games.jpg" alt=""/>
-        </div>
+        <ContactMe />
 
-    </ContentContainer>
+    </Container>
 }

@@ -15,11 +15,7 @@ class MyProjects extends React.Component<{}, MyProjectsState> {
             isLoading: true
         })
     }
-
-    componentWillMount() {
-
-    }
-
+    
     render() {
         return <section className="section my-projects">
             <Project 

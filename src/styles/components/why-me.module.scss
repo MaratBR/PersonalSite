@@ -1,0 +1,14 @@
+@import "../../styles/constants.scss";
+
+.whyMe {
+    padding: 5rem 1rem;
+
+    &__item {
+        margin: 20px;
+    }
+
+    @include for-tablet-portrait-up {
+        background-color: #fafafa;
+        border-top: 1px solid #f2f2f2;
+    }
+}
