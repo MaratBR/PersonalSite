@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gatsby build && gh-pages -d public"
+    "deploy": "gatsby build && npx firebase deploy --only hosting"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "firebase": "^7.23.0",
     "gatsby": "^2.24.73",
     "gatsby-plugin-mini-css-class-name": "^2.2.0",
+    "gatsby-plugin-robots-txt": "^1.5.3",
     "gatsby-plugin-sass": "^2.3.12",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",

@@ -12,6 +12,13 @@ module.exports = {
           dictionary: 'bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ0123456789',
           enableOnDevelopment: true,
         },
+      },
+      {
+        resolve: 'gatsby-plugin-robots-txt',
+        options: {
+          host: 'https://burnaev.space',
+          policy: [{ userAgent: '*', allow: '/' }]
+        }
       }
     ]
 }

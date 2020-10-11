@@ -1,10 +1,10 @@
 import React from "react"
-import "./footer.tsx.scss"
+const styles = require("../../styles/components/footer.module.scss");
 
 export default class SiteFooter extends React.Component {
     render() {
-        return <footer className="footer">
-
+        return <footer className={styles.footer}>
+            <span>&copy; Бурнаев Марат, все права защищены</span>
         </footer>
     }
 }
