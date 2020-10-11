@@ -17,7 +17,7 @@ module.exports = {
         resolve: 'gatsby-plugin-robots-txt',
         options: {
           host: 'https://burnaev.space',
-          policy: [{ userAgent: '*', allow: '/' }]
+          policy: [{ userAgent: '*', disallow: '/' }]
         }
       }
     ]

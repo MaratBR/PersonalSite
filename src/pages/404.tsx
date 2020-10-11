@@ -30,7 +30,7 @@ export default class Home extends React.Component<{}, NotFoundState> {
     render() {
         return <div className={styles.notFound}>
             <h1>404: Страница не найдена</h1>
-            <p>Страница, которую вы ищете не существует, но вот случайное фото коти (Предоставлено <a href="thecatapi.com">thecatapi.com</a>):</p>
+            <p>Страница, которую вы ищете не существует, но вот случайное фото коти (Предоставлено <a href="https://thecatapi.com">thecatapi.com</a>):</p>
             <div className={styles.image}>
                 <img src={this.state.url} alt={this.state.url} height={this.state.height} width={this.state.width} />
             </div>
