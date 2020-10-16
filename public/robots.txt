@@ -1,4 +1,4 @@
 User-agent: *
-Allow: /
+Disallow: /
 Sitemap: https://burnaev.space/sitemap.xml
 Host: https://burnaev.space
