@@ -5,6 +5,13 @@ module.exports = {
       description: `Blazing fast modern site generator for React`,
     },
     plugins: [
+      'gatsby-plugin-react-helmet',
+      {
+        resolve: 'gatsby-plugin-html-attributes',
+        options: {
+          lang: 'ru'
+        }
+      },
       'gatsby-plugin-sass',
       {
         resolve: `gatsby-plugin-minify-classnames`,

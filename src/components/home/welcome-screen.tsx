@@ -1,9 +1,13 @@
 import React from "react"
 import { Parallax } from "react-scroll-parallax"
 const styles = require("../../styles/components/welcome.module.scss")
-import texts from "../../resources/texts.json"
 
-const TEXTS = texts.typingTexts
+const TEXTS = [
+    'Full-Stack разработчик',
+    'пишу код',
+    'просто гусь',
+    'устал'
+]
 
 type WelcomeScreenState = {
     text: string,
@@ -78,7 +82,7 @@ export default class WelcomeScreen extends React.Component<{}, WelcomeScreenStat
             <Parallax y={[-50, 50]}>
                 <div className={styles.title}>
                     <span className={`${styles.typingText} title`}>
-                        &mdash; <em>{texts.myName}</em> &mdash; 
+                        &mdash; <em>Марат Бурнаев</em> &mdash; 
                     </span>
                     <span ref={this.welcomeTitleBottomRef} aria-label={TEXTS[0]}>
                         Я {this.state.text}
